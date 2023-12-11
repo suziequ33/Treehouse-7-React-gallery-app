@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Router, Route, Routes, Navigate } from 'react-router-dom';
 import Search from './Search';
-import Nav form './Nav';
-import PhotoList form './PhotoList';
+import Nav from './Nav';
+import PhotoList from './PhotoList';
 import config from './config';
 import './App.css'
 
@@ -11,14 +11,17 @@ const apiKey = config.apiKey;
 const App = () => {
   return (
     <Router>
-      <Search />
-      <Nav />
-      <Routes>
-        <Route path="/" element={} />
-        <Route path="/cats" element={} />
-        <Route path="/dogs" element={} />
-        <Route path="/computers" element={} />
-      </Routes>
+      <div>
+        <Search />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Navigate to="/cats" /> } />
+          <Route path="/cats" element={<PhotoList />} />
+          <Route path="/dogs" element={<PhotoList />} />
+          <Route path="/computers" element={<PhotoList />} />
+          <Route path="/search/:query" element={<Search/>} />
+        </Routes>
+      </div>
     </Router>
   );
 };
