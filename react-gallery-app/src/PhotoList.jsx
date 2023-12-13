@@ -1,12 +1,15 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import Photo from './Photo';
 
-const PhotoList= () => {
-    const { query } = useParams();
-
+const PhotoList= ({title, data}) => {
     return (
-        <div>
-            <h2>Results {query || 'defult topic'}</h2>
+        <div className="photo-container">
+            <h2>{title}</h2>
+            <ul>
+                {data.map((photo) => (
+                    <Photo key={photo.id} photo={photo} />
+                ))}
+            </ul>
         </div>
     );
 };

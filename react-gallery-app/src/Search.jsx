@@ -1,17 +1,19 @@
-import React from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Searct = () => {
+const Search = ({ fetchData }) => {
     const navigate = useNavigate();
+    const [query, setQuery] = useState('');
 
     const handleSearch = (e) => {
-        const query = e.target.elements.search.value;
-        navigate(`/search/${query}`);
+       e.preventDefault();
+       fetchData(query);
+       navigate(`/search/${query}`);
     };
 
     return (
         <form className="search-form" onSubmit={handleSearch}>
-            <input type="search" name="search" placeholder="Search" required />
+            <input type="search" name="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} required />
             <button type="submit" className="search-button">
                 Search
             </button>
