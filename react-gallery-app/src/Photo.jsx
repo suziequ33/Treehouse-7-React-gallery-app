@@ -6,7 +6,7 @@ const Photo = ({ photo }) => {
 
     return (
         <li>
-            <img src={imgUrl} alt="" />
+            <img src={imgUrl} alt={photo.title} />
         </li>
     );
 };
